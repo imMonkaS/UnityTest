@@ -10,6 +10,8 @@ public class ChangingColour : MonoBehaviour
     public GameObject capsule;
     public Button btn;
 
+    int c = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +33,17 @@ public class ChangingColour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F)){
             capsule.SetActive(!capsule.activeSelf);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnMouseDown();
+        }
     }
 
 
     private void OnMouseDown()
     {
         sphere.GetComponent<Renderer>().material.color = Color.cyan;
-        if (Input.GetMouseButton(0))
-            sphere.GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 0) * 0.5f;
+        sphere.GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 0) * 0.5f;
     }
     private void OnMouseUp()
     {
